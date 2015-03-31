@@ -5,7 +5,11 @@ The map source files of Fortress Forever
 
 1. **Install Source SDK**
   * In Steam, go to the Library tab and select *Tools* from the dropdown
-  * Find Source SDK in the list and install it
+  * Find *Source SDK* in the list and install it
+2. **Install Source SDK Base**
+Note: Fortress Forever redistributes Source SDK Base, but there are issues when Hammer does not load appid 215; see issue #4
+  * In Steam, go to the Library tab and select *Tools* from the dropdown
+  * Find *Source SDK Base 2006* in the list and install it
 2. **Setup Source SDK**
   * Run Source SDK once (it will install some misc files and set the `sourcesdk` environment variable for you). Close it once it is finished.
   * Run [`setup.bat`](setup.bat)

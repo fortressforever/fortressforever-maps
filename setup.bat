@@ -39,7 +39,7 @@ echo 	"Games"
 echo 	{
 echo 		"Fortress Forever"
 echo 		{
-echo 			"GameDir"		"%ModDir%"
+echo 			"GameDir"		"%GameDir%/sdk"
 echo 			"hammer"
 echo 			{
 echo 				"GameData0"		"%ModDir%/fortressforever.fgd"
