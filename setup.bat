@@ -28,6 +28,8 @@ set Ep1BinDir=%sourcesdk%\bin\ep1\bin
 set ConfigFile=%Ep1BinDir%\GameConfig.txt
 set SchemeDir=%Ep1BinDir%\resource
 set SchemeFile=%SchemeDir%\SourceScheme.res
+set GameInfoDir=%GameDir%/sdk
+set GameInfoFile=%GameInfoDir%/gameinfo.txt
 
 echo(
 echo Writing "%ConfigFile%"...
@@ -63,6 +65,32 @@ echo 		}
 echo 	}
 echo }
 ) >"%ConfigFile%"
+echo  -^> Done
+
+IF NOT EXIST "%GameInfoDir%" mkdir "%GameInfoDir%"
+echo(
+echo Writing "%GameInfoFile%"...
+(
+echo "GameInfo"
+echo {
+echo 	game	"Fortress Forever"
+echo 	title	"Fortress Forever"
+echo 	name	"Fortress Forever"
+echo 	type multiplayer_only
+echo(
+echo 	FileSystem
+echo 	{
+echo 		SteamAppId				215
+echo 		ToolsAppId				211
+echo 		SearchPaths
+echo 		{
+echo 			Game				^|gameinfo_path^|..\FortressForever
+echo 			Game				^|gameinfo_path^|..\hl2
+echo 			Game				^|gameinfo_path^|..\platform
+echo 		}
+echo 	}
+echo }
+) > "%GameInfoFile%"
 echo  -^> Done
 
 :: Need a SourceScheme.res in bin/ep1/bin/resource so that Hammer doesn't throw
