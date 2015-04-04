@@ -11,7 +11,7 @@ The map source files of Fortress Forever
   * Find *Source SDK Base 2006* in the list and install it
 3. **Setup Source SDK**
   * Run Source SDK once (it will install some misc files and set the `sourcesdk` environment variable for you). Close it once it is finished.
-  * Run [`setup.bat`](setup.bat)
+  * Download and run [`setup.bat`](https://raw.githubusercontent.com/fortressforever/fortressforever-maps/master/setup.bat)
 4. **Launch Hammer**
   * Open Source SDK
   * Select *Source Engine 2006* as the *Engine Version* and *Fortress Forever* as the *Current Game*
