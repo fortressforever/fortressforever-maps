@@ -1,4 +1,5 @@
 @echo off
+setlocal enabledelayedexpansion
 FOR /f "tokens=1,2*" %%E in ('reg query "HKEY_CURRENT_USER\Software\Valve\Steam"') DO (
 	IF "%%E"=="SteamPath" (
 		set SteamPath=%%G
@@ -15,7 +16,27 @@ IF "%sourcesdk%"=="" (
 	exit /B
 )
 
-set GameDir=%SteamPath%/steamapps/common/Fortress Forever
+for /F "usebackq tokens=*" %%L in ("%SteamPath%\steamapps\libraryfolders.vdf") do (
+    for /F "tokens=1*" %%A in ("%%L") do (
+        if "%%B" NEQ "" (
+            if "%%~A" EQU "path" (
+                set "CurPath=%%~B"
+                set "CurPath=!CurPath:\\=\!"
+            )
+            :: 253530 is the FF appid
+            if "%%~A" EQU "253530" (
+                set "GameDir=!CurPath!/steamapps/common/Fortress Forever"
+            )
+        )
+    )
+)
+
+IF "%GameDir%"=="" (
+	echo "%SteamPath%\steamapps\libraryfolders.vdf" does not contain FF's appid. Make sure Fortress Forever is installed
+	pause
+	exit /B
+)
+
 set ModDir=%GameDir%/FortressForever
 
 IF NOT EXIST "%GameDir%" (
